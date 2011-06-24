@@ -65,7 +65,9 @@
     };
 
     base.setOpacity = function (opacity) {
-      base.$label.stop().animate({ opacity: opacity }, base.options.fadeDuration);
+      base.$label.stop().animate({ opacity: opacity }, base.options.fadeDuration, function(){
+          if ($.browser.msie){this.style.removeAttribute('filter');}
+      });
       base.showing = (opacity > 0.0);
     };
 
